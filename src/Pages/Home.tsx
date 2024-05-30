@@ -4,6 +4,7 @@ import { useContext, useState } from "react";
 import { login } from "../services/Login";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "../components/AppContext";
+import { changeLocalStorage } from "../services/storage";
 
 
 const Home = () => {
@@ -11,13 +12,13 @@ const Home = () => {
     const { setisLoggedIn } = useContext(AppContext)
     const navigate = useNavigate()
     const validateUser = async (email: string) => {
-        const loggedIn = await login(email)
-    
+      const loggedIn = await login(email)
 
     if (!loggedIn){
      return alert("Email invalido")
     }
     setisLoggedIn(true)
+    changeLocalStorage({ login: true})
     navigate("/conta/1")
   }
     return (
