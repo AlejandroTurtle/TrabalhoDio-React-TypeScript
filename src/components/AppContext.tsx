@@ -10,9 +10,10 @@ interface IAppContext {
    export const AppContextProvider = ({children}: any) => {
     const [ isLoggedIn , setisLoggedIn] = useState<boolean>(false)
 
-    const storage = getAllLocalStorage()
+
 
     useEffect(() => {
+      const storage = getAllLocalStorage()
       if(storage){
         const { login } = JSON.parse(storage)
         setisLoggedIn(login)
