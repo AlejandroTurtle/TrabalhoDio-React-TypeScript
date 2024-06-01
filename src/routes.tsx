@@ -13,7 +13,7 @@ const MainRoutes = () => {
         <Routes>
         <Route path="/" element={<Home />} />
         <Route path='/conta/:id' element={ isLoggedIn ? <Conta/> : <Home />} /> 
-        <Route path="/infoconta" element={<ContaInfo />} />
+        <Route path="/infoconta/:id" element={isLoggedIn ?  <ContaInfo /> : <Home/>} />
       </Routes>
     )
 }

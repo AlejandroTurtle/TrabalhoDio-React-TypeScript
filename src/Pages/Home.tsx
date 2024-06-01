@@ -9,13 +9,14 @@ import { changeLocalStorage } from "../services/storage";
 
 const Home = () => {
     const [ email, setEmail ] = useState<string>('')
+    const [ password, setSenha ] = useState<string>('')
     const { setisLoggedIn } = useContext(AppContext)
     const navigate = useNavigate()
-    const validateUser = async (email: string) => {
-      const loggedIn = await login(email)
+    const validateUser = async (email: string, password: string) => {
+      const loggedIn = await login(email, password)
 
-    if (!loggedIn){
-     return alert("Email invalido")
+    if (!loggedIn || !email || !password){
+     return alert("Email invalido ou senha invalido")
     }
     setisLoggedIn(true)
     changeLocalStorage({ login: true})
@@ -34,10 +35,10 @@ const Home = () => {
               </VStack>
               <h3>Senha</h3>
               <VStack spacing={4} mt={4}>
-              <Input htmlSize={50} width="auto" placeholder="Insira sua senha" textAlign="center" type="password"/>
+              <Input htmlSize={50} width="auto" placeholder="Insira sua senha" textAlign="center" value={password} onChange={(event) => setSenha(event.target.value)} type="password"/>
               </VStack>
             <Center>
-              <Button onClick={() => validateUser(email)} backgroundColor='#0a39ab' size='sm' marginTop="20px" width="100%" color="white">
+              <Button onClick={() => validateUser(email, password)} backgroundColor='#0a39ab' size='sm' marginTop="20px" width="100%" color="white">
                 Entrar
               </Button>
             </Center>
