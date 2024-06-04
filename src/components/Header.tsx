@@ -18,7 +18,7 @@ export const Header = () =>{
         <Flex backgroundColor="#f8d117" color="#0a39ab" padding="5px" >
             <Box > 
             <Center >
-                <Text fontSize="30px" fontFamily="arial, sans-serif">
+                <Text fontSize="30px" fontFamily="arial, sans-serif" width="100%">
                 Dio Bank 
                  </Text>
              </Center>
